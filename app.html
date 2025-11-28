@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YouTube Shorts Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Make it feel like a real app when saved to home screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    .loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">Loading YouTube Shorts…</div>
+
+  <!-- Official YouTube Shorts page in full-screen iframe -->
+  <iframe
+    id="shortsFrame"
+    src="https://www.youtube.com/shorts"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+
+  <script>
+    const frame = document.getElementById('shortsFrame');
+    const loading = document.getElementById('loading');
+
+    frame.addEventListener('load', () => {
+      loading.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
